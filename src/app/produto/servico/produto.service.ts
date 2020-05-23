@@ -1,3 +1,4 @@
+import { LinkService } from './../../../environments/environment';
 import { Produto } from './produto-model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -6,22 +7,24 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProdutoService {
+  
+  linkService = LinkService;
 
   constructor(private http: HttpClient) { }
 
   consultar(nome: string){
-    return this.http.get("https://cors-anywhere.herokuapp.com/https://stormy-badlands-29216.herokuapp.com/api/produto/consultar/" + nome)
+    return this.http.get(`${this.linkService}produto/consultar/${nome}`)
   }
 
   incluir(produto: Produto){
-    return this.http.post("https://cors-anywhere.herokuapp.com/https://stormy-badlands-29216.herokuapp.com/api/produto/incluir/", produto)
+    return this.http.post(`${this.linkService}produto/incluir/`, produto)
   }
 
   alterar(produto: Produto){
-    return this.http.patch("https://cors-anywhere.herokuapp.com/https://stormy-badlands-29216.herokuapp.com/api/produto/alterarparcial/", produto)
+    return this.http.patch(`${this.linkService}produto/alterarparcial/`, produto)
   }
 
   excluir(produto: Produto){
-    return this.http.post("https://cors-anywhere.herokuapp.com/https://stormy-badlands-29216.herokuapp.com/api/produto/remover/", produto)
+    return this.http.post(`${this.linkService}produto/remover/`, produto)
   }
 }

@@ -1,3 +1,4 @@
+import { LinkService } from './../../../environments/environment';
 import { Cliente } from './cliente-model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -6,21 +7,22 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ClienteService {
+  linkService = LinkService;
 
   consultar(nome: string){
-    return this.http.get("https://cors-anywhere.herokuapp.com/https://stormy-badlands-29216.herokuapp.com/api/cliente/consultar/" + nome)
+    return this.http.get(`${this.linkService}cliente/consultar/${nome}`)
   }
 
   incluir(cliente: Cliente){
-    return this.http.post("https://cors-anywhere.herokuapp.com/https://stormy-badlands-29216.herokuapp.com/api/cliente/incluir/", cliente)
+    return this.http.post(`${this.linkService}cliente/incluir/`, cliente)
   }
 
   alterar(cliente: Cliente){
-    return this.http.patch("https://cors-anywhere.herokuapp.com/https://stormy-badlands-29216.herokuapp.com/api/cliente/alterarparcial/", cliente)
+    return this.http.patch(`${this.linkService}cliente/alterarparcial/`, cliente)
   }
 
   remover(cliente: Cliente){
-    return this.http.post("https://cors-anywhere.herokuapp.com/https://stormy-badlands-29216.herokuapp.com/api/cliente/remover", cliente)
+    return this.http.post(`${this.linkService}cliente/remover`, cliente)
   }
 
   constructor(private http: HttpClient) { }
