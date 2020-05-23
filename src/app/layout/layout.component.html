@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row" style="background-color: #0069d9; margin-bottom: 20px;">
+        <div class="col-lg-12">
+            <!-- head -->
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                        <h1 style="color: aliceblue;">Sistema de Vendas</h1>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <!--MENU-->
+        <div class="col-2">
+            <!--LATERAL-->
+            <ul class="nav flex-column nav-pills nav-stacked">
+                <li class="nav-item pb-2">
+                    <a class="nav-link " (click)="setHome()" [class.active]="home" routerLink="/">HOME</a>
+                </li>
+                <li class="nav-item pb-2">
+                    <a class="nav-link " (click)="setCliente()" [class.active]="cliente" routerLink="/cliente">CLIENTE</a>
+                </li>
+                <li class="nav-item pb-2">
+                    <a class="nav-link " (click)="setProduto()" [class.active]="produto" routerLink="/produto">PRODUTO</a>
+                </li>
+                <li class="nav-item pb-2">
+                    <a class="nav-link " (click)="setVenda()" [class.active]="venda" routerLink="/venda">VENDA</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-10">
+            <!--CORPO-->
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

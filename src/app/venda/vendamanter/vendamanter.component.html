@@ -1,0 +1,60 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Venda - Incluir</h5>
+
+        <div class="row">
+            <div class="form-group col-8">
+                <label for="nome" class="control-label">Cliente:</label>
+                <select class="form-control" [(ngModel)]='venda.cliente'>
+                        <option [ngValue]= 'null'>Selecione</option>
+                        <option *ngFor='let cliente of listaclientes' [ngValue]='cliente'>{{cliente.nome}}</option>
+                    </select>
+            </div>
+            <div class="form-group col-4">
+                <label for="data" class="control-label">Data da Venda</label>
+                <input class="form-control" type="date" [(ngModel)]="venda.data" />
+            </div>
+        </div>
+
+        <div class="card ">
+            <div class="card-body">
+                <h5 class="card-title">Adicionar Produto</h5>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="nome" class="control-label">Produto:</label>
+                        <select class="form-control" [(ngModel)]='vendaProduto.produto'>
+                                <option [ngValue]= 'null' >Selecione</option>
+                                <option *ngFor='let produto of listaprodutos' [ngValue]='produto'>{{produto.nome}}</option>
+                            </select>
+                    </div>
+                    <div class="form-group col-2">
+                        <label for="nome" class="control-label">Quantidade: </label>
+                        <input type="number" class="form-control" name="quantidade" min="0" [(ngModel)]='vendaProduto.quantidade'>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="incluirProduto()">Adicionar</button>
+
+                <table class="table table-bordered mt-4 text-center">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Produto: </th>
+                            <th>Quantidade</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let vendaProduto of venda.listaVendaItem'>
+                            <th>{{vendaProduto.produto.nome}}</th>
+                            <th>{{vendaProduto.quantidade}}</th>
+                            <th><button type="button" class="btn btn-primary" (click)='remover(vendaProduto)'>Excluir</button></th>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-primary mr-3" (click)="incluir()">Incluir</button>
+                <button type="button" class="btn btn-primary mr-3" (click)="voltar()">Voltar</button>
+
+            </div>
+        </div>
+    </div>
+
+</div>

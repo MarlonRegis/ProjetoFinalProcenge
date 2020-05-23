@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Venda</h5>
+
+        <div class="form-group">
+            <label>Cliente</label>
+            <select class="form-control" [(ngModel)]='codigoVenda'>
+                  <option [ngValue]=''>  </option>
+                  <option *ngFor="let venda of listavenda" [ngValue]= 'venda.cliente.codigo'>{{venda.cliente.nome}}</option>
+                </select>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-12">
+                <button type="button" class="btn btn-primary" (click)="pesquisar()">Pesquisar</button>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-12">
+                <table class="table text-center table-bordered">
+                    <thead class=" table-primary ">
+                        <tr>
+                            <th></th>
+                            <th>Codigo</th>
+                            <th>Cliente</th>
+                            <th>Data da Venda</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let venda of listavenda">
+                            <th><input type="radio" name="selecionado" (change)=selecionar(venda)></th>
+                            <th>{{venda.codigo}}</th>
+                            <th>{{venda.cliente.nome}}</th>
+                            <th>{{venda.data | date : 'dd/MM/yyyy'}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-12">
+                <button type="button" class="btn btn-primary" style="margin-right: 15px" (click)="incluir()">Incluir</button>
+                <button type="button" class="btn btn-danger" style="margin-right: 15px;" (click)="excluir()">Excluir</button>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
